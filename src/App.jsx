@@ -1,24 +1,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-// Example ILO list string
-const DATA_STRING = `Apply the general composition of connective tissue to cartilage, bones, tendons
-and ligaments;Overview of the Musculoskeletal System 1;Lecture;Week 0; https://www.ole.bris.ac.uk/ultra/courses/_266749_1/outline/edit/document/_9707492_1?courseId=_266749_1:
-`;
-
-const parseData = (data) => {Apply the general composition of connective tissue to cartilage, bones, tendons
-and ligaments;Overview of the Musculoskeletal System 1;Lecture;Week 0; https://www.ole.bris.ac.uk/ultra/courses/_266749_1/outline/edit/document/_9707492_1?courseId=_266749_1:Briefly describe the histological anatomy of the three main types of cartilage and
-provide a gross anatomy example of each;Overview of the Musculoskeletal System 1;Lecture;Week0;https://www.ole.bris.ac.uk/ultra/courses/_266749_1/outline/edit/document/_9707492_1?courseId=_266749_1:Describe the structure of mammalian bones;Overview of the Musculoskeletal System 1;Lecture;Week 0;https://www.ole.bris.ac.uk/ultra/courses/_266749_1/outline/edit/document/_9707492_1?courseId=_266749_1:Summarise the main characteristics and main functions of osteoclasts,
-osteoblasts and osteocytes. (bone cells);Overview of the Musculoskeletal System 1;Lecture;week 0;https://www.ole.bris.ac.uk/ultra/courses/_266749_1/outline/edit/document/_9707492_1?courseId=_266749_1:Describe the processes of bone mineralisation and bone development;Overview of the Musculoskeletal System 1;Lecture;Week 0; https://www.ole.bris.ac.uk/ultra/courses/_266749_1/outline/edit/document/_9707492_1?courseId=_266749_1:Outline the process of fracture repair;Overview of the Musculoskeletal System 1;Lecture;Week 0; https://www.ole.bris.ac.uk/ultra/courses/_266749_1/outline/edit/document/_9707492_1?courseId=_266749_1:Describe the three main joint types;Overview of the Musculoskeletal System 1;Lecture;Week 0; https://www.ole.bris.ac.uk/ultra/courses/_266749_1/outline/edit/document/_9707492_1?courseId=_266749_1:Provide an example for each of the seven classifications of synovial joints;Overview of the Musculoskeletal System 1;Lecture;Week 0; https://www.ole.bris.ac.uk/ultra/courses/_266749_1/outline/edit/document/_9707492_1?courseId=_266749_1
-  return data.split(":").map((entry) => {
-    const [ilo, title, type, week, link] = entry.split(";");
-    return { ilo, title, type, week, link };
-  });
-};
+import ILOS from "./ilos"; // ✅ import your ILO list here
 
 export default function App() {
-  const [ilos] = useState(parseData(DATA_STRING));
-  const [deck, setDeck] = useState(ilos);
+  const [deck, setDeck] = useState(ILOS);
   const [discardPile, setDiscardPile] = useState([]);
   const [currentCard, setCurrentCard] = useState(null);
   const [showInfo, setShowInfo] = useState(false);
